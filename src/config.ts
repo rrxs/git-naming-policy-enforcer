@@ -19,11 +19,13 @@ export const getConfig = async (): Promise<Config | undefined> => {
 
 export const createConfig = async (): Promise<Config | undefined> => {
   try {
-    console.log("Creating default config file...");
     try {
+      console.log("Creating default config file...");
       const content = JSON.stringify(DEFAULT_CONFIG_FILE, undefined, 2);
 
       await promisify(fs.writeFile)(CONFIG_FILE_NAME, content);
+
+      console.log("Config file created");
 
       return DEFAULT_CONFIG_FILE;
     } catch (e) {
