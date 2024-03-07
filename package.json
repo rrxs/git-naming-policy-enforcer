@@ -1,0 +1,24 @@
+{
+  "name": "@rrxs/git-naming-policy-enforcer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node esbuild"
+  },
+  "bin": {
+    "genforce": "bin/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "conf": "^12.0.0",
+    "esbuild": "^0.20.1",
+    "shelljs": "^0.8.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24"
+  }
+}
