@@ -1,16 +1,14 @@
 import fs from "fs";
-import path, { resolve } from "path";
+import path from "path";
 import { promisify } from "util";
 import { CONFIG_FILE_NAME, Config, DEFAULT_CONFIG_FILE } from "./utils";
 
 export const getConfig = async (): Promise<Config | undefined> => {
   const pathArg = ".";
   const searchPath = path.join(process.cwd(), pathArg, CONFIG_FILE_NAME);
-  const currentPath = resolve(searchPath);
 
   try {
     const file = await promisify(fs.readFile)(searchPath);
-    console.log(`Using config file: ${currentPath}`);
     return JSON.parse(file.toString()) as Config;
   } catch (error) {
     console.log("Config file not found");

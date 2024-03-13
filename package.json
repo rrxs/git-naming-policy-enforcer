@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node esbuild"
+    "build": "node esbuild",
+    "build:dev": "NODE_ENV=development node esbuild"
   },
   "bin": {
     "genforce": "bin/index.js"
@@ -18,6 +19,7 @@
     "shelljs": "^0.8.5"
   },
   "devDependencies": {
-    "@types/node": "^20.11.24"
+    "@types/node": "^20.11.24",
+    "@types/shelljs": "^0.8.15"
   }
 }
