@@ -13,12 +13,12 @@ export const CONFIG_FILE_NAME = ".genforce.config.json";
 
 export const DEFAULT_CONFIG_FILE: Config = {
   branch: {
-    regexBranchName: "feature|feat",
-    branchErrorMessage: "default branch error message",
+    regexBranchName: "(feat|fix)/[A-Z]+-[0-9]+",
+    branchErrorMessage: "",
     ignoreList: [],
   },
   commit: {
-    regexCommitMessage: "/feat:*/",
-    commitErrorMessage: "default commit error message",
+    regexCommitMessage: "(feat|fix): [A-Z]+-[0-9]+ - .*",
+    commitErrorMessage: "",
   },
 };
