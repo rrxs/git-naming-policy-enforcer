@@ -1,7 +1,8 @@
 #!/usr/bin/env node
+import colors from "colors";
 import { createConfig, getConfig } from "./config";
 import { Config } from "./utils";
-import { validateBranchName } from "./validators";
+import { isBranchNameValid, isCommitMessageValid } from "./validators";
 
 const run = async () => {
   let config: Config | undefined = await getConfig();
@@ -14,15 +15,28 @@ const run = async () => {
 
   if (flag === "-b") {
     try {
-      const result = await validateBranchName(config, value);
-      console.log(result);
+      const isValid = await isBranchNameValid(config, value);
+      if (!isValid) {
+        console.log(colors.red("invalid branch name"));
+        process.exit(1);
+      }
     } catch (error) {
       console.log(error);
+      process.exit(1);
     }
   }
+
   if (flag === "-c") {
-    // const result = await validateCommitMessage(config, value);
-    // console.log(result);
+    try {
+      const isValid = await isCommitMessageValid(config, value);
+      if (!isValid) {
+        console.log(colors.red("invalid commmit message"));
+        process.exit(1);
+      }
+    } catch (error) {
+      console.log(error);
+      process.exit(1);
+    }
   }
 };
 
