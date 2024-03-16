@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 import colors from "colors";
-import { createConfig, getConfig } from "./config";
-import { Config } from "./utils";
+import { Config, createConfig, getConfig } from "./config";
 import { isBranchNameValid, isCommitMessageValid } from "./validators";
 
 const run = async () => {

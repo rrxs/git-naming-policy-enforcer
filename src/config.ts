@@ -1,7 +1,32 @@
 import fs from "fs";
 import path from "path";
 import { promisify } from "util";
-import { CONFIG_FILE_NAME, Config, DEFAULT_CONFIG_FILE } from "./utils";
+
+export const CONFIG_FILE_NAME = ".genforce.config.json";
+
+export type Config = {
+  branch: {
+    branchErrorMessage: string;
+    regexBranchName: string;
+    ignoreList: string[];
+  };
+  commit: {
+    commitErrorMessage: string;
+    regexCommitMessage: string;
+  };
+};
+
+export const DEFAULT_CONFIG_FILE: Config = {
+  branch: {
+    regexBranchName: "(feat|fix)/[A-Z]+-[0-9]+",
+    branchErrorMessage: "",
+    ignoreList: [],
+  },
+  commit: {
+    regexCommitMessage: "(feat|fix): [A-Z]+-[0-9]+ - .*",
+    commitErrorMessage: "",
+  },
+};
 
 export const getConfig = async (): Promise<Config | undefined> => {
   const pathArg = ".";
