@@ -10,7 +10,7 @@
 
 ## Description
 
-A simple CLI that can be used to validate branch and commit messages.
+A simple CLI that can be used to validate branch and commit messages using a regex configuration.
 
 Examples of use:
 
